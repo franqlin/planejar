@@ -4,7 +4,6 @@ import web.planejar.modelo.AcessoPermissao;
 import web.planejar.controller.util.JsfUtil;
 import web.planejar.controller.util.PaginationHelper;
 import web.planejar.facade.AcessoPermissaoFacade;
-
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
