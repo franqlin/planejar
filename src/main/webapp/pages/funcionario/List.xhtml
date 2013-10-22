@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+      >
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,82 +21,86 @@
                     <h:outputText value="#{funcionarioController.pagination.pageFirstItem + 1}..#{funcionarioController.pagination.pageLastItem + 1}/#{funcionarioController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{funcionarioController.previous}" value="#{bundle.Previous} #{funcionarioController.pagination.pageSize}" rendered="#{funcionarioController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{funcionarioController.next}" value="#{bundle.Next} #{funcionarioController.pagination.pageSize}" rendered="#{funcionarioController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{funcionarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                    <p:dataTable value="#{funcionarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px"
+                                 paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15"
+                                 >
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_idFuncionario}"/>
                             </f:facet>
                             <h:outputText value="#{item.idFuncionario}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_nome}"/>
                             </f:facet>
                             <h:outputText value="#{item.nome}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_datanascimento}"/>
                             </f:facet>
                             <h:outputText value="#{item.datanascimento}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_cpf}"/>
                             </f:facet>
                             <h:outputText value="#{item.cpf}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_tituloeleitor}"/>
                             </f:facet>
                             <h:outputText value="#{item.tituloeleitor}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_zonaeleitoral}"/>
                             </f:facet>
                             <h:outputText value="#{item.zonaeleitoral}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_secao}"/>
                             </f:facet>
                             <h:outputText value="#{item.secao}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_pis}"/>
                             </f:facet>
                             <h:outputText value="#{item.pis}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_cnh}"/>
                             </f:facet>
                             <h:outputText value="#{item.cnh}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_observacoes}"/>
                             </f:facet>
                             <h:outputText value="#{item.observacoes}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_fkIdEscola}"/>
                             </f:facet>
                             <h:outputText value="#{item.fkIdEscola}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFuncionarioTitle_fkIdCargo}"/>
                             </f:facet>
                             <h:outputText value="#{item.fkIdCargo}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -103,8 +109,8 @@
                             <h:commandLink action="#{funcionarioController.prepareEdit}" value="#{bundle.ListFuncionarioEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{funcionarioController.destroy}" value="#{bundle.ListFuncionarioDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <h:commandLink action="#{funcionarioController.prepareCreate}" value="#{bundle.ListFuncionarioCreateLink}"/>
