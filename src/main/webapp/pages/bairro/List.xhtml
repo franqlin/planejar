@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBairroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBairroEmpty}" rendered="#{bairroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{bairroController.items.rowCount > 0}">
+                    <h:outputText value="#{bairroController.pagination.pageFirstItem + 1}..#{bairroController.pagination.pageLastItem + 1}/#{bairroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{bairroController.previous}" value="#{bundle.Previous} #{bairroController.pagination.pageSize}" rendered="#{bairroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{bairroController.next}" value="#{bundle.Next} #{bairroController.pagination.pageSize}" rendered="#{bairroController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{bairroController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBairroTitle_idBairro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBairro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBairroTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBairroTitle_fkIdCidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdCidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{bairroController.prepareView}" value="#{bundle.ListBairroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bairroController.prepareEdit}" value="#{bundle.ListBairroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bairroController.destroy}" value="#{bundle.ListBairroDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{bairroController.prepareCreate}" value="#{bundle.ListBairroCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBairroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

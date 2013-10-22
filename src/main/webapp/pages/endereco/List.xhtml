@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEnderecoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEnderecoEmpty}" rendered="#{enderecoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{enderecoController.items.rowCount > 0}">
+                    <h:outputText value="#{enderecoController.pagination.pageFirstItem + 1}..#{enderecoController.pagination.pageLastItem + 1}/#{enderecoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{enderecoController.previous}" value="#{bundle.Previous} #{enderecoController.pagination.pageSize}" rendered="#{enderecoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{enderecoController.next}" value="#{bundle.Next} #{enderecoController.pagination.pageSize}" rendered="#{enderecoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{enderecoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_idEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_cep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cep}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_complemento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.complemento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_logradouro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.logradouro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_pontoreferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pontoreferencia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdUf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdUf}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdTipoLogradouro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdTipoLogradouro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdTipoEndereco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdTipoEndereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdRegional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdRegional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdFuncionario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdFuncionario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdEscola}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdEscola}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdCidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdCidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnderecoTitle_fkIdBairro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdBairro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{enderecoController.prepareView}" value="#{bundle.ListEnderecoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enderecoController.prepareEdit}" value="#{bundle.ListEnderecoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{enderecoController.destroy}" value="#{bundle.ListEnderecoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{enderecoController.prepareCreate}" value="#{bundle.ListEnderecoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEnderecoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

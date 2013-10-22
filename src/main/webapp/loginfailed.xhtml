@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+        <h:body>
+
+        <ui:composition template="template/layout.xhtml">
+            <ui:define name="content">
+    	<h2>Tela de Login</h2>
+    
+		<h:form id="loginForm" prependId="false">
+				
+				<h:messages globalOnly="true"/>
+                                <h1>Usuário inválido</h1>
+			
+			<h:commandButton type="submit" id="login" value="Voltar" action="login.xhtml" />
+		</h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

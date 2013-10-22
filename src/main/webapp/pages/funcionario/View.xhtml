@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFuncionarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_idFuncionario}"/>
+                    <h:outputText value="#{funcionarioController.selected.idFuncionario}" title="#{bundle.ViewFuncionarioTitle_idFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_nome}"/>
+                    <h:outputText value="#{funcionarioController.selected.nome}" title="#{bundle.ViewFuncionarioTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_datanascimento}"/>
+                    <h:outputText value="#{funcionarioController.selected.datanascimento}" title="#{bundle.ViewFuncionarioTitle_datanascimento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_cpf}"/>
+                    <h:outputText value="#{funcionarioController.selected.cpf}" title="#{bundle.ViewFuncionarioTitle_cpf}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_tituloeleitor}"/>
+                    <h:outputText value="#{funcionarioController.selected.tituloeleitor}" title="#{bundle.ViewFuncionarioTitle_tituloeleitor}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_zonaeleitoral}"/>
+                    <h:outputText value="#{funcionarioController.selected.zonaeleitoral}" title="#{bundle.ViewFuncionarioTitle_zonaeleitoral}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_secao}"/>
+                    <h:outputText value="#{funcionarioController.selected.secao}" title="#{bundle.ViewFuncionarioTitle_secao}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_pis}"/>
+                    <h:outputText value="#{funcionarioController.selected.pis}" title="#{bundle.ViewFuncionarioTitle_pis}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_cnh}"/>
+                    <h:outputText value="#{funcionarioController.selected.cnh}" title="#{bundle.ViewFuncionarioTitle_cnh}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_observacoes}"/>
+                    <h:outputText value="#{funcionarioController.selected.observacoes}" title="#{bundle.ViewFuncionarioTitle_observacoes}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_fkIdEscola}"/>
+                    <h:outputText value="#{funcionarioController.selected.fkIdEscola}" title="#{bundle.ViewFuncionarioTitle_fkIdEscola}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_fkIdCargo}"/>
+                    <h:outputText value="#{funcionarioController.selected.fkIdCargo}" title="#{bundle.ViewFuncionarioTitle_fkIdCargo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionarioController.destroyAndView}" value="#{bundle.ViewFuncionarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFuncionarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareCreate}" value="#{bundle.ViewFuncionarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareList}" value="#{bundle.ViewFuncionarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFuncionarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

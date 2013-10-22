@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAcessoUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAcessoUsuarioEmpty}" rendered="#{acessoUsuarioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{acessoUsuarioController.items.rowCount > 0}">
+                    <h:outputText value="#{acessoUsuarioController.pagination.pageFirstItem + 1}..#{acessoUsuarioController.pagination.pageLastItem + 1}/#{acessoUsuarioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{acessoUsuarioController.previous}" value="#{bundle.Previous} #{acessoUsuarioController.pagination.pageSize}" rendered="#{acessoUsuarioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{acessoUsuarioController.next}" value="#{bundle.Next} #{acessoUsuarioController.pagination.pageSize}" rendered="#{acessoUsuarioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{acessoUsuarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_nomeUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_senha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.senha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_ativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ativo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_dataCriacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataCriacao}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_dataModificacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataModificacao}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAcessoUsuarioTitle_idFuncionario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFuncionario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{acessoUsuarioController.prepareView}" value="#{bundle.ListAcessoUsuarioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acessoUsuarioController.prepareEdit}" value="#{bundle.ListAcessoUsuarioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acessoUsuarioController.destroy}" value="#{bundle.ListAcessoUsuarioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{acessoUsuarioController.prepareCreate}" value="#{bundle.ListAcessoUsuarioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAcessoUsuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAcessoUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_idUsuario}" for="idUsuario" />
+                    <h:inputText id="idUsuario" value="#{acessoUsuarioController.selected.idUsuario}" title="#{bundle.EditAcessoUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditAcessoUsuarioRequiredMessage_idUsuario}"/>
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_nomeUsuario}" for="nomeUsuario" />
+                    <h:inputText id="nomeUsuario" value="#{acessoUsuarioController.selected.nomeUsuario}" title="#{bundle.EditAcessoUsuarioTitle_nomeUsuario}" />
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_senha}" for="senha" />
+                    <h:inputText id="senha" value="#{acessoUsuarioController.selected.senha}" title="#{bundle.EditAcessoUsuarioTitle_senha}" />
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_ativo}" for="ativo" />
+                    <h:inputText id="ativo" value="#{acessoUsuarioController.selected.ativo}" title="#{bundle.EditAcessoUsuarioTitle_ativo}" />
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_dataCriacao}" for="dataCriacao" />
+                    <h:inputText id="dataCriacao" value="#{acessoUsuarioController.selected.dataCriacao}" title="#{bundle.EditAcessoUsuarioTitle_dataCriacao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_dataModificacao}" for="dataModificacao" />
+                    <h:inputText id="dataModificacao" value="#{acessoUsuarioController.selected.dataModificacao}" title="#{bundle.EditAcessoUsuarioTitle_dataModificacao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAcessoUsuarioLabel_idFuncionario}" for="idFuncionario" />
+                    <h:selectOneMenu id="idFuncionario" value="#{acessoUsuarioController.selected.idFuncionario}" title="#{bundle.EditAcessoUsuarioTitle_idFuncionario}" required="true" requiredMessage="#{bundle.EditAcessoUsuarioRequiredMessage_idFuncionario}">
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{acessoUsuarioController.update}" value="#{bundle.EditAcessoUsuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAcessoUsuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{acessoUsuarioController.prepareList}" value="#{bundle.EditAcessoUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAcessoUsuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

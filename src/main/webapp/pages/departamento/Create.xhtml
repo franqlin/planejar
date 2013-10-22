@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDepartamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDepartamentoLabel_idDepartamento}" for="idDepartamento" />
+                    <h:inputText id="idDepartamento" value="#{departamentoController.selected.idDepartamento}" title="#{bundle.CreateDepartamentoTitle_idDepartamento}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_idDepartamento}"/>
+                    <h:outputLabel value="#{bundle.CreateDepartamentoLabel_coddepartamento}" for="coddepartamento" />
+                    <h:inputText id="coddepartamento" value="#{departamentoController.selected.coddepartamento}" title="#{bundle.CreateDepartamentoTitle_coddepartamento}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_coddepartamento}"/>
+                    <h:outputLabel value="#{bundle.CreateDepartamentoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{departamentoController.selected.nome}" title="#{bundle.CreateDepartamentoTitle_nome}" />
+                    <h:outputLabel value="#{bundle.CreateDepartamentoLabel_fkIdEmpresa}" for="fkIdEmpresa" />
+                    <h:selectOneMenu id="fkIdEmpresa" value="#{departamentoController.selected.fkIdEmpresa}" title="#{bundle.CreateDepartamentoTitle_fkIdEmpresa}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_fkIdEmpresa}">
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{departamentoController.create}" value="#{bundle.CreateDepartamentoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{departamentoController.prepareList}" value="#{bundle.CreateDepartamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDepartamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

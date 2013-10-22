@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateContatoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_idContato}" for="idContato" />
+                    <h:inputText id="idContato" value="#{contatoController.selected.idContato}" title="#{bundle.CreateContatoTitle_idContato}" required="true" requiredMessage="#{bundle.CreateContatoRequiredMessage_idContato}"/>
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{contatoController.selected.descricao}" title="#{bundle.CreateContatoTitle_descricao}" />
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_idTipocontato}" for="idTipocontato" />
+                    <h:selectOneMenu id="idTipocontato" value="#{contatoController.selected.idTipocontato}" title="#{bundle.CreateContatoTitle_idTipocontato}" required="true" requiredMessage="#{bundle.CreateContatoRequiredMessage_idTipocontato}">
+                        <f:selectItems value="#{tpContatoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_fkIdFuncionario}" for="fkIdFuncionario" />
+                    <h:selectOneMenu id="fkIdFuncionario" value="#{contatoController.selected.fkIdFuncionario}" title="#{bundle.CreateContatoTitle_fkIdFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_fkIdEscola}" for="fkIdEscola" />
+                    <h:selectOneMenu id="fkIdEscola" value="#{contatoController.selected.fkIdEscola}" title="#{bundle.CreateContatoTitle_fkIdEscola}" >
+                        <f:selectItems value="#{escolaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContatoLabel_fkIdEmpresa}" for="fkIdEmpresa" />
+                    <h:selectOneMenu id="fkIdEmpresa" value="#{contatoController.selected.fkIdEmpresa}" title="#{bundle.CreateContatoTitle_fkIdEmpresa}" required="true" requiredMessage="#{bundle.CreateContatoRequiredMessage_fkIdEmpresa}">
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contatoController.create}" value="#{bundle.CreateContatoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contatoController.prepareList}" value="#{bundle.CreateContatoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateContatoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

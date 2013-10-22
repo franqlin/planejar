@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEnderecoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_idEndereco}" for="idEndereco" />
+                    <h:inputText id="idEndereco" value="#{enderecoController.selected.idEndereco}" title="#{bundle.CreateEnderecoTitle_idEndereco}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_idEndereco}"/>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_cep}" for="cep" />
+                    <h:inputText id="cep" value="#{enderecoController.selected.cep}" title="#{bundle.CreateEnderecoTitle_cep}" />
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_complemento}" for="complemento" />
+                    <h:inputText id="complemento" value="#{enderecoController.selected.complemento}" title="#{bundle.CreateEnderecoTitle_complemento}" />
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{enderecoController.selected.numero}" title="#{bundle.CreateEnderecoTitle_numero}" />
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_logradouro}" for="logradouro" />
+                    <h:inputText id="logradouro" value="#{enderecoController.selected.logradouro}" title="#{bundle.CreateEnderecoTitle_logradouro}" />
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_pontoreferencia}" for="pontoreferencia" />
+                    <h:inputText id="pontoreferencia" value="#{enderecoController.selected.pontoreferencia}" title="#{bundle.CreateEnderecoTitle_pontoreferencia}" />
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdUf}" for="fkIdUf" />
+                    <h:selectOneMenu id="fkIdUf" value="#{enderecoController.selected.fkIdUf}" title="#{bundle.CreateEnderecoTitle_fkIdUf}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdUf}">
+                        <f:selectItems value="#{ufController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdTipoLogradouro}" for="fkIdTipoLogradouro" />
+                    <h:selectOneMenu id="fkIdTipoLogradouro" value="#{enderecoController.selected.fkIdTipoLogradouro}" title="#{bundle.CreateEnderecoTitle_fkIdTipoLogradouro}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdTipoLogradouro}">
+                        <f:selectItems value="#{tpLogradouroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdTipoEndereco}" for="fkIdTipoEndereco" />
+                    <h:selectOneMenu id="fkIdTipoEndereco" value="#{enderecoController.selected.fkIdTipoEndereco}" title="#{bundle.CreateEnderecoTitle_fkIdTipoEndereco}" >
+                        <f:selectItems value="#{tpEnderecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdRegional}" for="fkIdRegional" />
+                    <h:selectOneMenu id="fkIdRegional" value="#{enderecoController.selected.fkIdRegional}" title="#{bundle.CreateEnderecoTitle_fkIdRegional}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdRegional}">
+                        <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdFuncionario}" for="fkIdFuncionario" />
+                    <h:selectOneMenu id="fkIdFuncionario" value="#{enderecoController.selected.fkIdFuncionario}" title="#{bundle.CreateEnderecoTitle_fkIdFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdEscola}" for="fkIdEscola" />
+                    <h:selectOneMenu id="fkIdEscola" value="#{enderecoController.selected.fkIdEscola}" title="#{bundle.CreateEnderecoTitle_fkIdEscola}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdEscola}">
+                        <f:selectItems value="#{escolaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdEmpresa}" for="fkIdEmpresa" />
+                    <h:selectOneMenu id="fkIdEmpresa" value="#{enderecoController.selected.fkIdEmpresa}" title="#{bundle.CreateEnderecoTitle_fkIdEmpresa}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdEmpresa}">
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdCidade}" for="fkIdCidade" />
+                    <h:selectOneMenu id="fkIdCidade" value="#{enderecoController.selected.fkIdCidade}" title="#{bundle.CreateEnderecoTitle_fkIdCidade}" >
+                        <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnderecoLabel_fkIdBairro}" for="fkIdBairro" />
+                    <h:selectOneMenu id="fkIdBairro" value="#{enderecoController.selected.fkIdBairro}" title="#{bundle.CreateEnderecoTitle_fkIdBairro}" required="true" requiredMessage="#{bundle.CreateEnderecoRequiredMessage_fkIdBairro}">
+                        <f:selectItems value="#{bairroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{enderecoController.create}" value="#{bundle.CreateEnderecoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{enderecoController.prepareList}" value="#{bundle.CreateEnderecoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEnderecoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

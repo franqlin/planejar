@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditInspecaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditInspecaoLabel_idInpecao}" for="idInpecao" />
+                    <h:inputText id="idInpecao" value="#{inspecaoController.selected.idInpecao}" title="#{bundle.EditInspecaoTitle_idInpecao}" required="true" requiredMessage="#{bundle.EditInspecaoRequiredMessage_idInpecao}"/>
+                    <h:outputLabel value="#{bundle.EditInspecaoLabel_dataInspecao}" for="dataInspecao" />
+                    <h:inputText id="dataInspecao" value="#{inspecaoController.selected.dataInspecao}" title="#{bundle.EditInspecaoTitle_dataInspecao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditInspecaoLabel_fkIdInspecaonutricao}" for="fkIdInspecaonutricao" />
+                    <h:selectOneMenu id="fkIdInspecaonutricao" value="#{inspecaoController.selected.fkIdInspecaonutricao}" title="#{bundle.EditInspecaoTitle_fkIdInspecaonutricao}" required="true" requiredMessage="#{bundle.EditInspecaoRequiredMessage_fkIdInspecaonutricao}">
+                        <f:selectItems value="#{inspecaoNutricaoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInspecaoLabel_fkIdFuncionario}" for="fkIdFuncionario" />
+                    <h:selectOneMenu id="fkIdFuncionario" value="#{inspecaoController.selected.fkIdFuncionario}" title="#{bundle.EditInspecaoTitle_fkIdFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInspecaoLabel_fkIdEscola}" for="fkIdEscola" />
+                    <h:selectOneMenu id="fkIdEscola" value="#{inspecaoController.selected.fkIdEscola}" title="#{bundle.EditInspecaoTitle_fkIdEscola}" required="true" requiredMessage="#{bundle.EditInspecaoRequiredMessage_fkIdEscola}">
+                        <f:selectItems value="#{escolaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{inspecaoController.update}" value="#{bundle.EditInspecaoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditInspecaoViewLink}"/>
+                <br />
+                <h:commandLink action="#{inspecaoController.prepareList}" value="#{bundle.EditInspecaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditInspecaoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

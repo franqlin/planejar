@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFuncionarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_idFuncionario}" for="idFuncionario" />
+                    <h:inputText id="idFuncionario" value="#{funcionarioController.selected.idFuncionario}" title="#{bundle.CreateFuncionarioTitle_idFuncionario}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_idFuncionario}"/>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{funcionarioController.selected.nome}" title="#{bundle.CreateFuncionarioTitle_nome}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_datanascimento}" for="datanascimento" />
+                    <h:inputText id="datanascimento" value="#{funcionarioController.selected.datanascimento}" title="#{bundle.CreateFuncionarioTitle_datanascimento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_cpf}" for="cpf" />
+                    <h:inputText id="cpf" value="#{funcionarioController.selected.cpf}" title="#{bundle.CreateFuncionarioTitle_cpf}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_tituloeleitor}" for="tituloeleitor" />
+                    <h:inputText id="tituloeleitor" value="#{funcionarioController.selected.tituloeleitor}" title="#{bundle.CreateFuncionarioTitle_tituloeleitor}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_zonaeleitoral}" for="zonaeleitoral" />
+                    <h:inputText id="zonaeleitoral" value="#{funcionarioController.selected.zonaeleitoral}" title="#{bundle.CreateFuncionarioTitle_zonaeleitoral}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_secao}" for="secao" />
+                    <h:inputText id="secao" value="#{funcionarioController.selected.secao}" title="#{bundle.CreateFuncionarioTitle_secao}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_pis}" for="pis" />
+                    <h:inputText id="pis" value="#{funcionarioController.selected.pis}" title="#{bundle.CreateFuncionarioTitle_pis}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_cnh}" for="cnh" />
+                    <h:inputText id="cnh" value="#{funcionarioController.selected.cnh}" title="#{bundle.CreateFuncionarioTitle_cnh}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_observacoes}" for="observacoes" />
+                    <h:inputText id="observacoes" value="#{funcionarioController.selected.observacoes}" title="#{bundle.CreateFuncionarioTitle_observacoes}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_fkIdEscola}" for="fkIdEscola" />
+                    <h:selectOneMenu id="fkIdEscola" value="#{funcionarioController.selected.fkIdEscola}" title="#{bundle.CreateFuncionarioTitle_fkIdEscola}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_fkIdEscola}">
+                        <f:selectItems value="#{escolaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_fkIdCargo}" for="fkIdCargo" />
+                    <h:selectOneMenu id="fkIdCargo" value="#{funcionarioController.selected.fkIdCargo}" title="#{bundle.CreateFuncionarioTitle_fkIdCargo}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_fkIdCargo}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionarioController.create}" value="#{bundle.CreateFuncionarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareList}" value="#{bundle.CreateFuncionarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFuncionarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
