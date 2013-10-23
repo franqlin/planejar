@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateFuncionarioLabel_idFuncionario}" for="idFuncionario" />
-                    <h:inputText id="idFuncionario" value="#{funcionarioController.selected.idFuncionario}" title="#{bundle.CreateFuncionarioTitle_idFuncionario}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_idFuncionario}"/>
+                    <h:inputHidden id="idFuncionario" value="#{funcionarioController.selected.idFuncionario}"/>
                     <h:outputLabel value="#{bundle.CreateFuncionarioLabel_nome}" for="nome" />
                     <h:inputText id="nome" value="#{funcionarioController.selected.nome}" title="#{bundle.CreateFuncionarioTitle_nome}" />
                     <h:outputLabel value="#{bundle.CreateFuncionarioLabel_datanascimento}" for="datanascimento" />
@@ -43,7 +43,7 @@
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateFuncionarioLabel_fkIdCargo}" for="fkIdCargo" />
                     <h:selectOneMenu id="fkIdCargo" value="#{funcionarioController.selected.fkIdCargo}" title="#{bundle.CreateFuncionarioTitle_fkIdCargo}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_fkIdCargo}">
-                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}" var="#{cargo}" itemLabel="#{cargo.descricao}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
