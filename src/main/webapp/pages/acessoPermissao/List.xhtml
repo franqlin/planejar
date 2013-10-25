@@ -5,11 +5,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListAcessoPermissaoTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
+    <ui:composition template="/template/newTemplate.xhtml">
+
+        <ui:define name="conteudo">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -48,7 +46,7 @@
                 <h:commandLink action="#{acessoPermissaoController.prepareCreate}" value="#{bundle.ListAcessoPermissaoCreateLink}"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListAcessoPermissaoIndexLink}"/>
+             
             </h:form>
         </ui:define>
     </ui:composition>
